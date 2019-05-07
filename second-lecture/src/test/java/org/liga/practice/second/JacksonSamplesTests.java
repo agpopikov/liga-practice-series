@@ -21,8 +21,15 @@ public class JacksonSamplesTests {
     }
 
     @Test
+    public void serializationSampleWithDates() throws JsonProcessingException {
+        final List<NobelPrizeWinners> sample = Samples.getSomeNobelPrizeWinners();
+        String json = Utils.getObjectMapper().writeValueAsString(sample);
+        System.out.println("Result is " + json);
+    }
+
+    @Test
     public void deserializationSample() throws IOException {
-        String json = "{\"name\":\"Robert Koch\",\"discipline\":\"MEDICINE\",\"year\":1905}";
+        String json = "{\"full_name\":\"Robert Koch\",\"discipline\":\"MEDICINE\",\"year\":1905}";
         NobelPrizeWinners result = Utils.getObjectMapper().readValue(json, NobelPrizeWinners.class);
         Assert.assertEquals("Robert Koch", result.getName());
     }
@@ -31,7 +38,12 @@ public class JacksonSamplesTests {
     public void customStructureSample() throws IOException {
         JsonNode root = Utils.getObjectMapper().readTree(new File("./samples/sample-meteorite-landings.json"));
         root.forEach(node -> {
-//            node.
+            final JsonNode view = node.get("view");
+            Long v = node.asLong();
+            if (view != null) {
+                final JsonNode category = view.get("category");
+                System.out.println(category != null ? category.toString() : "null");
+            }
         });
     }
 }

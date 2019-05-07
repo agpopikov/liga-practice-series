@@ -1,0 +1,65 @@
+[
+  {
+    "discipline": "MEDICINE",
+    "year": 1905,
+    "birthday": "1998-01-01",
+    "full_name": "Robert Koch"
+  },
+  {
+    "discipline": "PHYSICS",
+    "year": 1918,
+    "birthday": {
+      "year": 1889,
+      "month": "FEBRUARY",
+      "chronology": {
+        "id": "ISO",
+        "calendarType": "iso8601"
+      },
+      "era": "CE",
+      "monthValue": 2,
+      "dayOfMonth": 1,
+      "dayOfYear": 32,
+      "dayOfWeek": "FRIDAY",
+      "leapYear": false
+    },
+    "full_name": "Max Planck"
+  },
+  {
+    "discipline": "PHYSICS",
+    "year": 1921,
+    "birthday": {
+      "year": 1889,
+      "month": "FEBRUARY",
+      "chronology": {
+        "id": "ISO",
+        "calendarType": "iso8601"
+      },
+      "era": "CE",
+      "monthValue": 2,
+      "dayOfMonth": 1,
+      "dayOfYear": 32,
+      "dayOfWeek": "FRIDAY",
+      "leapYear": false
+    },
+    "full_name": "Albert Einstein"
+  },
+  {
+    "discipline": "LITERATURE",
+    "year": 1929,
+    "birthday": {
+      "year": 1889,
+      "month": "FEBRUARY",
+      "chronology": {
+        "id": "ISO",
+        "calendarType": "iso8601"
+      },
+      "era": "CE",
+      "monthValue": 2,
+      "dayOfMonth": 1,
+      "dayOfYear": 32,
+      "dayOfWeek": "FRIDAY",
+      "leapYear": false
+    },
+    "full_name": "Thomas Mann"
+  }
+]
