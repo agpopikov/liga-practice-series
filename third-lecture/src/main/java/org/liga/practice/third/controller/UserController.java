@@ -2,6 +2,7 @@ package org.liga.practice.third.controller;
 
 import org.liga.practice.third.domain.User;
 import org.liga.practice.third.service.UserService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

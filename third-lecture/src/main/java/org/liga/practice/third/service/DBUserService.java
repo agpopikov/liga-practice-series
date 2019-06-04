@@ -6,12 +6,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-@Component
+@Service
 @Primary
 @Profile("local-db")
 public class DBUserService implements UserService {
@@ -22,6 +22,7 @@ public class DBUserService implements UserService {
 
     public DBUserService(UsersDao dao) {
         this.dao = dao;
+        log.warn("DBUserService is created!");
     }
 
     @Override

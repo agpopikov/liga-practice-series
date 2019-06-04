@@ -3,6 +3,9 @@ package org.liga.practice.third.service;
 import org.liga.practice.third.domain.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -13,6 +16,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component
+@Profile("!local-db")
 public class DummyUserService implements UserService {
 
     private static final Logger log = LoggerFactory.getLogger(DummyUserService.class);
@@ -26,6 +30,7 @@ public class DummyUserService implements UserService {
         result.add(new User(3L, "Albert", "Einstein", LocalDate.of(1889, 2, 1)));
         result.add(new User(4L, "Thomas", " Mann", LocalDate.of(1889, 2, 1)));
         this.users = result;
+        log.warn("DummyUserService is created!");
     }
 
     public List<User> getAllUsers() {

@@ -2,3 +2,15 @@ GET http://localhost:8080/api/user
 Accept: application/json
 
 ###
+
+GET http://localhost:8080/api/user/?user_id=2
+Accept: application/json
+
+###
+
+DELETE http://localhost:8080/api/user/1
+Content-Type: application/json
+
+{}
+
+###

@@ -18,7 +18,8 @@ public class UsersDao {
     }
 
     public List<User> getAllUsers() {
-        return jdbc.query("SELECT * FROM users", (rs, rowNum) -> {
+        return jdbc.query("SELECT * FROM users " +
+                "WHERE deleted = FALSE", (rs, rowNum) -> {
             User user = new User();
             user.setId(rs.getLong("id"));
             user.setFirstName(rs.getString("first_name"));
