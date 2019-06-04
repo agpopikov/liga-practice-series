@@ -36,8 +36,8 @@ public class UserController {
         }
     }
 
-    @DeleteMapping("/api/user/:id")
-    public void delete() {
-        // TODO
+    @DeleteMapping("/api/user/{id}")
+    public void delete(@PathVariable("id") Long id) {
+        service.deleteById(id);
     }
 }

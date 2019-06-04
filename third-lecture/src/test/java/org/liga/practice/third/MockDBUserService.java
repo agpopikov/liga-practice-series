@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class MockUserService extends UserService {
+public class MockDBUserService implements UserService {
 
     @Override
     public List<User> getAllUsers() {
@@ -16,6 +16,11 @@ public class MockUserService extends UserService {
 
     @Override
     public Optional<User> getById(Long id) {
-        return super.getById(id);
+        throw new RuntimeException("Not implemented yet!");
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        throw new RuntimeException("Not implemented yet!");
     }
 }
