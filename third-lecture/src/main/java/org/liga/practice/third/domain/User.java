@@ -1,6 +1,5 @@
 package org.liga.practice.third.domain;
 
-import lombok.Data;
 
 import java.time.LocalDate;
 

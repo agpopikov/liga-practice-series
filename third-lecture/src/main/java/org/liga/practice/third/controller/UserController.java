@@ -24,8 +24,8 @@ public class UserController {
         return service.getAllUsers();
     }
 
-    @GetMapping("/api/user/")
-    public ResponseEntity byId(@RequestParam("user_id") Long id) {
+    @GetMapping("/api/user/{id}")
+    public ResponseEntity byId(@PathVariable("id") Long id) {
         final Optional<User> user = service.getById(id);
         if (user.isPresent()) {
             return ResponseEntity.ok(user.get());
