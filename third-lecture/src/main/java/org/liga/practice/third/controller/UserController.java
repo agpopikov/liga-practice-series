@@ -3,6 +3,7 @@ package org.liga.practice.third.controller;
 import org.liga.practice.third.domain.User;
 import org.liga.practice.third.service.UserService;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,9 +16,16 @@ import java.util.Optional;
 public class UserController {
 
     private final UserService service;
+    private String message;
 
-    public UserController(UserService service) {
+    public UserController(UserService service, @Value("${user.message}") String message) {
         this.service = service;
+        this.message = message;
+    }
+
+    @RequestMapping(value = "/api/test", method = RequestMethod.GET)
+    public String test() {
+        return message;
     }
 
     @RequestMapping(value = "/api/user", method = RequestMethod.GET)

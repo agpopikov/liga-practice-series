@@ -3,17 +3,20 @@ package org.liga.practice.third.dao;
 import org.liga.practice.third.domain.User;
 import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 @Profile("local-db")
 public class UsersDao {
 
-    private final JdbcTemplate jdbc;
+    private final NamedParameterJdbcTemplate jdbc;
 
-    public UsersDao(JdbcTemplate jdbc) {
+    public UsersDao(NamedParameterJdbcTemplate jdbc) {
         this.jdbc = jdbc;
     }
 
@@ -31,6 +34,7 @@ public class UsersDao {
     }
 
     public void delete(Long id) {
-        jdbc.update("UPDATE users SET deleted = TRUE WHERE id = ?", id);
+        Map<String, Object> params = Collections.singletonMap("name", id);
+        jdbc.update("UPDATE users SET deleted = TRUE WHERE id = :name", params);
     }
 }

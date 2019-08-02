@@ -1,0 +1,4 @@
+CREATE TABLE tmp (
+    id BIGINT PRIMARY KEY,
+    name TEXT NULL
+);

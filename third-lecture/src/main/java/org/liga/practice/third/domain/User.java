@@ -1,14 +1,19 @@
 package org.liga.practice.third.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import java.time.LocalDate;
 
+@Data
 public class User {
 
     private Long id;
     private String firstName;
+    @JsonProperty("surname")
     private String lastName;
+    @JsonFormat(pattern = "YYYY-MM-dd")
     private LocalDate birthday;
     private Boolean active;
 
