@@ -4,6 +4,7 @@ import org.liga.practice.third.domain.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
@@ -16,7 +17,6 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component
-@Profile("!local-db")
 public class DummyUserService implements UserService {
 
     private static final Logger log = LoggerFactory.getLogger(DummyUserService.class);

@@ -1,5 +1,7 @@
 package org.liga.practice.third.dao;
 
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.liga.practice.third.domain.User;
 import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -11,14 +13,12 @@ import java.util.List;
 import java.util.Map;
 
 @Repository
-@Profile("local-db")
+//@Profile("local-db")
+@RequiredArgsConstructor
+//@AllArgsConstructor
 public class UsersDao {
 
     private final NamedParameterJdbcTemplate jdbc;
-
-    public UsersDao(NamedParameterJdbcTemplate jdbc) {
-        this.jdbc = jdbc;
-    }
 
     public List<User> getAllUsers() {
         return jdbc.query("SELECT * FROM users " +

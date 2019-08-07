@@ -4,16 +4,19 @@ import org.liga.practice.third.dao.UsersDao;
 import org.liga.practice.third.domain.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-@Primary
-@Profile("local-db")
+//@Profile("local-db")
+//@Profile("some-with-db")
+@Profile("!some")
 public class DBUserService implements UserService {
 
     private static final Logger log = LoggerFactory.getLogger(DBUserService.class);
