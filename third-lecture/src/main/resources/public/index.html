@@ -16,51 +16,68 @@
             crossorigin="anonymous"></script>
 </head>
 <body>
-<table class="table">
-    <thead>
-    <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-    </tr>
-    <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-    </tr>
-    <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-    </tr>
-    </tbody>
-</table>
+<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">UI</a>
+    <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+            <a class="nav-link" href="#"></a>
+        </li>
+    </ul>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Birthday</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody id="users"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
 <script type="text/javascript">
     $(document).ready(function () {
-        fetch('/api/user')
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (value) {
-                value.forEach(v => {
-
-                });
-            });
+        loadUsers();
     });
 
-</script>
+    function loadUsers() {
+        fetch('/api/user')
+            .then(response => response.json())
+            .then(value => {
+                let rows = '';
+                value.forEach(v => {
+                    let row = `<tr>
+                        <th scope="row">${v['id']}</th>
+                        <td>${v['first_name']}</td>
+                        <td>${v['surname']}</td>
+                        <td>${v['birthday']}</td>
+                        <td><button type="button" class="btn btn-danger" onclick="deleteUser(${v['id']})">Удалить</button></td>
+                    </tr>`;
+                    rows += row;
+                });
+                $('#users')[0].innerHTML = rows;
+            });
+    }
 
+    function deleteUser(id) {
+        console.log('Deleting users with id: ' + id);
+        fetch('/api/user/' + id, {method: 'DELETE'})
+            .then(function (response) {
+                console.log('User has been successfully deleted.');
+                loadUsers();
+            })
+            .catch(e => {
+                console.log('Unexpected error occurred.')
+            });
+    }
+</script>
 </body>
 </html>
