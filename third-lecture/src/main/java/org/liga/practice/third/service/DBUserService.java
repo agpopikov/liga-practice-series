@@ -16,7 +16,6 @@ import java.util.Optional;
 @Service
 //@Profile("local-db")
 //@Profile("some-with-db")
-@Profile("!some")
 public class DBUserService implements UserService {
 
     private static final Logger log = LoggerFactory.getLogger(DBUserService.class);

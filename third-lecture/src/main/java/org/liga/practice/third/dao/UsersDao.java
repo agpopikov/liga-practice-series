@@ -1,10 +1,7 @@
 package org.liga.practice.third.dao;
 
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.liga.practice.third.domain.User;
-import org.springframework.context.annotation.Profile;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 

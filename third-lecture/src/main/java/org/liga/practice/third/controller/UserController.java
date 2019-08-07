@@ -25,7 +25,7 @@ public class UserController {
     private final UserService service;
     private String message;
 
-    public UserController(UserService service, @Value("${user.message}") String message) {
+    public UserController(@Qualifier("DBUserService") UserService service, @Value("${user.message}") String message) {
         this.service = service;
         this.message = message;
     }
